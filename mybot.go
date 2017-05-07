@@ -10,24 +10,36 @@ import (
   "strings"
 )
 
+// var pages func = getPages()
+// for _, p := range pages {
+//     fmt.Println(p.toString())
+// }
+// fmt.Println(toJson(pages))
+
+// m, err := getMessage(ws)
+// if err != nil {
+//   log.Fatal(err)
+// }
+
 type Page struct {
     keyword string `json:"keyword"`
     pun   string `json:"pun"`
 }
 
-func (p Page) toString() string {
-    return toJson(p)
-}
+// func (p Page) toString() string {
+//     return toJson(p)
+// }
 
-func toJson(p interface{}) string {
-    bytes, err := json.Marshal(p)
-    if err != nil {
-        fmt.Println(err.Error())
-        os.Exit(1)
-    }
+// func toJson(p interface{}) string {
+//     bytes, err := json.Marshal(p)
+//     if err != nil {
+//         fmt.Println(err.Error())
+//         os.Exit(1)
+//     }
 
-    return string(bytes)
-}
+//     return string(bytes)
+// }
+
 
 // main function here sets up the websocket and runs the main loop for getting messages from the slackgroup
 
@@ -43,14 +55,6 @@ func main() {
 
   for {
     // read each incoming message
-
-    // pages := getPages()
-    // for _, p := range pages {
-    //     fmt.Println(p.toString())
-    // }
-    // fmt.Println(toJson(pages))
-
-
     m, err := getMessage(ws)
     if err != nil {
       log.Fatal(err)
@@ -62,8 +66,10 @@ func main() {
       if len(parts) == 2 && parts[1] == "pun" {
         // looks good, get the quote and reply with the result
         go func(m Message) {
-          m.Text = getPages()
-          // m.Text = getPages()
+          m.Text = "HI!"
+
+          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+
           postMessage(ws, m)
         }(m)
         // NOTE: the Message object is copied, this is intentional
@@ -85,7 +91,7 @@ func main() {
     }
     var c []Page
     json.Unmarshal(raw, &c)
-    return string(c)
+    return c
   }
 
 
