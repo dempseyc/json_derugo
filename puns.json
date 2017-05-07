@@ -1,0 +1,36 @@
+{
+  "puns": [
+    {
+    "keyword": ["react", "native", "redux", "component", "state", "props"],
+    "pun": "I just had an allergic REACTion to what you just said."
+    },
+    {
+      "keyword": ["jason", "json", "go"],
+      "pun": "JSOOOOON DeRuGOOOOO"
+    },
+    {
+      "keyword": ["script", "javascript", "java", "jquery"],
+      "pun": "Funny,it's almost like these lines are (java)scripted"
+    },
+     {
+      "keyword": ["object", "oop", "key", "value"],
+      "pun": "If the value is 'my heart', the key is you"
+    },
+     {
+      "keyword": ["express", "node", "nodejs", "backend", "server"],
+      "pun": "Girl, are you built in Node.js? Because your back-end is ROBUST"
+    },
+     {
+      "keyword": ["rails", "ruby", "brian"],
+      "pun": "Ruby tends to deRail the most well-thought-out plans"
+    },
+     {
+      "keyword": ["words", "es6", "babel", "word"],
+      "pun": "Would you stop babel-ing on? It's getting annoying."
+    },
+     {
+      "keyword": ["turtle", "shoebill", "better", "wdi", "cohort"],
+      "pun": "Did you really think trusting a turtle would work out?"
+    }
+  ]
+}
