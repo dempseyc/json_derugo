@@ -66,7 +66,7 @@ func main() {
       if len(parts) == 2 && parts[1] == "pun" {
         // looks good, get the quote and reply with the result
         go func(m Message) {
-          m.Text = "HI!"
+          m.Text = "<sassy>Eh, NO!</sassy>"
 
           //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
 
