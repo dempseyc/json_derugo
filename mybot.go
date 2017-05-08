@@ -66,10 +66,18 @@ func main() {
           m.Text = "What's supdog?"
           postMessage(ws, m)
         }(m)
+
+      } else if len(parts) >= 2 && parts[1] == "NaN" {
+        go func(m Message) {
+        m.Text = "YOLNaN!!"
+        postMessage(ws, m)
+      }(m)
+
       } else if len(parts) == 1 {
         // looks good, get the quote and reply with the result
         go func(m Message) {
           m.Text = "<sassy>Eh, NO!</sassy>"
+
           postMessage(ws, m)
         }(m)
         // NOTE: the Message object is copied, this is intentional
@@ -90,22 +98,18 @@ func main() {
 
       } else if len(parts) == 4 {
 
-        go func(m Message) {
-          m.Text = "Ruby tends to derail the most well thought out plans."
-          postMessage(ws, m)
-        }(m)
-        } else if len(parts) == 5 {
         // looks good, get the quote and reply with the result
         go func(m Message) {
           m.Text = "Talk Ruby to me."
-          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+
           postMessage(ws, m)
         }(m)
-      } else if len(parts) == 6 {
+
+      } else if len(parts) >= 5 {
         // looks good, get the quote and reply with the result
         go func(m Message) {
           m.Text = "JSON DeruGOOOOOOOO"
-          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+
           postMessage(ws, m)
         }(m)
 
