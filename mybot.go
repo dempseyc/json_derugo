@@ -25,6 +25,19 @@ type Page struct {
     pun   string `json:"pun"`
 }
 
+  // jsonData := `
+  // {
+  // "name": "Ali Weinberg"
+  // }
+  // `
+  // var obj map[string]string
+
+  // err := json.Unmarshal([]byte(jsonData), &obj)
+  // if err != nil {
+  //   panic(err)
+  // }
+  // fmt.Println(obj)
+
 // func (p Page) toString() string {
 //     return toJson(p)
 // }
@@ -62,7 +75,7 @@ func main() {
     if m.Type == "message" && strings.HasPrefix(m.Text, "<@"+id+">") {
       // if so try to parse if
       parts := strings.Fields(m.Text)
-      if len(parts) >= 1 {
+      if len(parts) == 1 {
         // looks good, get the quote and reply with the result
         go func(m Message) {
           m.Text = "<sassy>Eh, NO!</sassy>"
@@ -72,6 +85,45 @@ func main() {
           postMessage(ws, m)
         }(m)
         // NOTE: the Message object is copied, this is intentional
+      } else if len(parts) == 2 {
+        // looks good, get the quote and reply with the result
+        go func(m Message) {
+          m.Text = "Girl, are you built in NODE.js? because your back-end is ROBUST."
+
+          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+
+          postMessage(ws, m)
+        }(m)
+
+      } else if len(parts) == 3 {
+        // looks good, get the quote and reply with the result
+        go func(m Message) {
+          m.Text = "Ruby tends to derail the most well thought out plans."
+
+          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+
+          postMessage(ws, m)
+        }(m)
+
+        } else if len(parts) == 4 {
+        // looks good, get the quote and reply with the result
+        go func(m Message) {
+          m.Text = "Talk Ruby to me."
+
+          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+
+          postMessage(ws, m)
+        }(m)
+
+      } else if len(parts) == 5 {
+        // looks good, get the quote and reply with the result
+        go func(m Message) {
+          m.Text = "JSON DeruGOOOOOOOO"
+
+          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+
+          postMessage(ws, m)
+        }(m)
       } else {
         // huh?
         m.Text = fmt.Sprintf("sorry, that does not compute\n")
@@ -79,7 +131,6 @@ func main() {
       }
     }
   }
-
 }
 
   func getPages() []Page {
