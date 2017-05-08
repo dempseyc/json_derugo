@@ -75,12 +75,18 @@ func main() {
     if m.Type == "message" && strings.HasPrefix(m.Text, "<@"+id+">") {
       // if so try to parse if
       parts := strings.Fields(m.Text)
-      if len(parts) == 1 {
+      if len(parts) >= 2 && parts[1] == "smells" {
+          go func(m Message) {
+          m.Text = "What's supdog?"
+          postMessage(ws, m)
+        }(m)
+
+
+      } else if len(parts) == 1 {
         // looks good, get the quote and reply with the result
         go func(m Message) {
           m.Text = "<sassy>Eh, NO!</sassy>"
 
-          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
 
           postMessage(ws, m)
         }(m)
@@ -90,17 +96,13 @@ func main() {
         go func(m Message) {
           m.Text = "Girl, are you built in NODE.js? because your back-end is ROBUST."
 
-          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
-
           postMessage(ws, m)
         }(m)
 
       } else if len(parts) == 3 {
-        // looks good, get the quote and reply with the result
+
         go func(m Message) {
           m.Text = "Ruby tends to derail the most well thought out plans."
-
-          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
 
           postMessage(ws, m)
         }(m)
