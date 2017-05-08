@@ -25,19 +25,6 @@ type Page struct {
     pun   string `json:"pun"`
 }
 
-  // jsonData := `
-  // {
-  // "name": "Ali Weinberg"
-  // }
-  // `
-  // var obj map[string]string
-
-  // err := json.Unmarshal([]byte(jsonData), &obj)
-  // if err != nil {
-  //   panic(err)
-  // }
-  // fmt.Println(obj)
-
 // func (p Page) toString() string {
 //     return toJson(p)
 // }
@@ -60,11 +47,9 @@ func main() {
     fmt.Fprintf(os.Stderr, "usage: mybot slack-bot-token\n")
     os.Exit(1)
   }
-
   // start a websocket-based Real Time API session
   ws, id := slackConnect(os.Args[1])
   fmt.Println("mybot ready, ^C exits")
-
   for {
     // read each incoming message
     m, err := getMessage(ws)
@@ -75,6 +60,7 @@ func main() {
     if m.Type == "message" && strings.HasPrefix(m.Text, "<@"+id+">") {
       // if so try to parse if
       parts := strings.Fields(m.Text)
+
       if len(parts) >= 2 && parts[1] == "smells" {
           go func(m Message) {
           m.Text = "What's supdog?"
@@ -99,12 +85,11 @@ func main() {
         // looks good, get the quote and reply with the result
         go func(m Message) {
           m.Text = "Girl, are you built in NODE.js? because your back-end is ROBUST."
-
+          //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
           postMessage(ws, m)
         }(m)
-
       } else if len(parts) == 3 {
-
+        // looks good, get the quote and reply with the result
         go func(m Message) {
           m.Text = "Ruby tends to derail the most well thought out plans."
 
@@ -112,6 +97,7 @@ func main() {
         }(m)
 
       } else if len(parts) == 4 {
+
         // looks good, get the quote and reply with the result
         go func(m Message) {
           m.Text = "Talk Ruby to me."
@@ -126,6 +112,31 @@ func main() {
 
           postMessage(ws, m)
         }(m)
+
+      } else if len(parts) == 7 {
+        // looks good, get the quote and reply with the result
+        go func(m Message) {
+        m.Text = "Who's thirsty? I'm feeling rather parsed!"
+        //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+        postMessage(ws, m)
+        }(m)
+
+      } else if len(parts) == 8 {
+        // looks good, get the quote and reply with the result
+        go func(m Message) {
+        m.Text = "What the function?!?!"
+        //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+        postMessage(ws, m)
+        }(m)
+
+      } else if len(parts) == 10 {
+        // looks good, get the quote and reply with the result
+        go func(m Message) {
+        m.Text = "You've got a lovely framework"
+        //function call at m.Text = \theFunction()\ should be triggering the response by calling a method that returns the response through postMessage(ws,m)
+        postMessage(ws, m)
+        }(m)
+
       } else {
         // huh?
         m.Text = fmt.Sprintf("sorry, that does not compute\n")
